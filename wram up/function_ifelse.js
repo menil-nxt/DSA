@@ -58,6 +58,4 @@
     }
     isEvenOdd(77);
 
-// Loop(For, While)
-    
 
