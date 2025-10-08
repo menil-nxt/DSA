@@ -17,6 +17,7 @@ console.log(result);
 
 
 // this is also solution but it's take time 
+
 // function removeElement(nums,val){
 //     for(let i=0;i<nums.length;i++){
 //         if(nums[i]===val){
