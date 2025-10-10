@@ -8,17 +8,16 @@
 //Output: ["o","l","l","e","h"]
 
 let reverseString = (s) => {
-    let len = s.length;
-    let halfLength = len / 2;
-    
-    for(let i = 0; i < halfLength; i++){
-        
-        let temp = s[i];
-        s[i] = s[len-1-i];
-        s[len-1-i] = temp;
-    }
-    console.log(s);
-}
+  let len = s.length;
+  let halfLength = len / 2;
 
-let s = ["m","e","n","i","l"];
+  for (let i = 0; i < halfLength; i++) {
+    let temp = s[i];
+    s[i] = s[len - 1 - i];
+    s[len - 1 - i] = temp;
+  }
+  console.log(s);
+};
+
+let s = ["m", "e", "n", "i", "l"];
 reverseString(s);
