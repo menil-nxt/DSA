@@ -14,12 +14,12 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 
 function buySell(stock) {
   let min = stock[0];
-  let maxProfite = 0;
+  let maxProfit = 0;
 
   for (let i = 0; i < stock.length; i++) {
-    if (stock[i] - min > maxProfite) {
+    if (stock[i] - min > maxProfit) {
       // stock[i](current value of index)-min value > mxProfite  => maxProfite = stock[i](current value of index)-min value
-      maxProfite = stock[i] - min;
+      maxProfit = stock[i] - min;
     }
     if (stock[i] < min) {
       // current value of index < min value   =>  min = current value index
@@ -27,7 +27,7 @@ function buySell(stock) {
     }
   }
   console.log(min); // for min it's give you min number
-  return maxProfite; // maxProfite of buy and sell.
+  return maxProfit; // maxProfite of buy and sell.
 }
 
 let stock = [6, 7, 3, 4, 5, 2, 9, 8];

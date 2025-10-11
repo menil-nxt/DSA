@@ -4,6 +4,7 @@ function moveZeros(nums) {
   let x = 0;
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] !== 0) {
+      // check if nums[i] != 0 => nums[x] = nums[i] => x++;
       nums[x] = nums[i];
       x++;
     }
