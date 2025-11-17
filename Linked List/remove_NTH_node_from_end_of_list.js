@@ -5,6 +5,7 @@
 //      this.next = (next===undefined ? null : next)    next is node value is there than return next otherwise return null
 // }
 
+// Approch - 1 (Two Pass)
 function removeNode(head, n) {
   // for finding nth node or deleting that we need sentinel node
   // when you have any question about remove any node frome list at that time in your first come sentinel node
@@ -30,6 +31,32 @@ function removeNode(head, n) {
   }
 
   prev.next = prev.next.next;
+
+  return sentinel.next;
+}
+
+// Approch - 2 (One pass) (with --> two pointer)
+
+function removeNode() {
+  // add a sentinel node at start
+  let sentinel = new ListNode();
+  sentinel.next = head;
+
+  // move my first pointer ahead bt n
+  first = sentinel; // initialy first pointer at sentinel node
+  for (let i = 0; i < n; i++) {
+    first = first.next;
+  }
+
+  // move both pointer untile first pointer reach at last node
+  let second = sentinel;
+  while (first.next) {
+    first = first.next;
+    second = second.next;
+  }
+
+  // just delete second.next node
+  second.next = second.next.next;
 
   return sentinel.next;
 }
