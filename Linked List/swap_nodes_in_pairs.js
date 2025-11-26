@@ -1,4 +1,4 @@
-// Swap Nodes In Pairs
+// Swap Nodes In Pairs (Iterative Approch)
 
 function swapPairs(head) {
   // corner cases
@@ -23,4 +23,19 @@ function swapPairs(head) {
     nxt = curr && curr.next;
   }
   return dummy.next;
+}
+
+// Swap Nodes In Pairs (Recursive Approch)
+
+function swapPairs(head) {
+  // base case
+  if (!head || !head.next) return head;
+
+  let left = head;
+  let right = head.next;
+
+  left.next = swapPairs(right.next);
+  right.next = left;
+
+  return right;
 }
