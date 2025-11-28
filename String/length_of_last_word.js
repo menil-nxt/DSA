@@ -18,7 +18,7 @@ function lengthOfLastWord(s) {
 
 // but this is not right way to solve this question for interview with built-in function
 
-// without built-in function
+// without built-in function(Two loop)
 function lengthOfLastWord(s) {
   // trim all the spaces at the end
   let n = s.length - 1; // start from last char (it's your last char)
@@ -38,6 +38,22 @@ function lengthOfLastWord(s) {
     }
     --n;
     ++count;
+  }
+  return count;
+}
+
+// with Onw loop
+
+function lengthOfLastWord(s) {
+  let n = s.length - 1;
+  let count = 0;
+  while (n >= 0) {
+    if (s[n] != " ") {
+      count++;
+    } else if (count > 0) {
+      break;
+    }
+    n--;
   }
   return count;
 }
