@@ -2,7 +2,7 @@
 
 let s = "Menil";
 
-var maxFreqSum = function (s) {
+function maxFreqSum(s) {
   // store all the value with frequency in a map
   let map = {}; // it's one object
   for (let i = 0; i < s.length; i++) {
@@ -44,4 +44,4 @@ var maxFreqSum = function (s) {
   }
   // return both sum
   return maxVowels + maxConsonant;
-};
+}
