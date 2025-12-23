@@ -1,4 +1,4 @@
-// Isomorphic - strings
+// Isomorphic strings
 
 function isIsomorphic(s, t) {
   // two maps are created
