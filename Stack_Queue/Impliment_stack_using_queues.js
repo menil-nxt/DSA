@@ -91,3 +91,50 @@ MyStack.prototype.empty = function () {
  * var param_3 = obj.top()
  * var param_4 = obj.empty()
  */
+
+// Impliment Stack Using Queues (One Queues)
+
+var MyStack = function () {
+  this.q1 = [];
+};
+
+/**
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function (x) {
+  this.q1.push(x);
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function () {
+  let n = this.q1.length;
+  for (let i = 0; i < n - 1; i++) {
+    // q1 shift by one and push(enqueue) it into itself every time
+    this.q1.push(this.q1.shift());
+  }
+  return this.q1.shift(); // only return dequeue element
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function () {
+  let n = this.q1.length;
+  for (let i = 0; i < n - 1; i++) {
+    // q1 shift by one and push(enqueue) it into itself every time
+    this.q1.push(this.q1.shift());
+  }
+  let front = this.q1[0];
+  this.q1.push(this.q1.shift()); // dequeue element and return that element and than enqueue(push)
+  return front;
+};
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function () {
+  return this.q1.length === 0;
+};
