@@ -33,3 +33,19 @@ function removeOuterParentheses(s) {
   }
   return ans;
 }
+
+// ingnore 0 level not 1 level -> for that we are starting level from -1.
+function removeOuterParentheses(s) {
+  let level = -1; // 0 level is ingnoring lavel
+  let ans = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") {
+      level++;
+      ans += level ? s[i] : ""; // we don't want to check level > 1 or not because it 0 level that we ingnoring
+    } else {
+      ans += level ? s[i] : "";
+      level--;
+    }
+  }
+  return ans;
+}
