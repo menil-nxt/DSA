@@ -59,37 +59,52 @@ var nextGreaterElement = function (nums1, nums2) {
 
 // Next Greater Element I (With Stack)
 
-function nextGreaterElement(nums1, arr) {
+function nextGreaterElement(nums1, nums2) {
+  // for each element of nums2 array we put inside map
   let ngeMap = {};
+
+  // for storing checked element we use stack for get prev element use
   let stack = [];
-  let n = arr.length;
 
-  stack.push(arr[n - 1]);
-  ngeMap[arr[n - 1]] = -1;
+  // length of nums2
+  let n = nums2.length;
 
+  // staring loop from end of array
+  // and n - 1 => is always -1 because no grater element after that element(because it's last element)
+
+  // push last element of array inside stack
+  stack.push(nums2[n - 1]);
+
+  // push inside map also n-1 element -> with -1 value
+  ngeMap[nums2[n - 1]] = -1;
+
+  // loop throw from (n - 2) to next smaller element get. till 0th index.
   for (let i = n - 2; i >= 0; i--) {
-    let top = stack[stack.length - 1];
-    if (arr[i] < top) {
-      ngeMap[arr[i]] = top;
+    let top = stack[stack.length - 1]; // top of stack element get
+
+    if (nums2[i] < top) {
+      ngeMap[nums2[i]] = top; // map[key] = ngeMap[nums2[i]] , top = value (of that key)
     } else {
       while (stack.length) {
-        if (stack[stack.length - 1] < arr[i]) {
+        // stack length is exist -> loop run
+        if (nums2[i] > stack[stack.length - 1]) {
           stack.pop();
         } else {
-          ngeMap[arr[i]] = stack[stack.length - 1];
+          ngeMap[nums2[i]] = stack[stack.length - 1];
           break;
         }
       }
       if (stack.length === 0) {
-        ngeMap[arr[i]] = -1;
+        // stack is empty than map[nums2[i]] = key -> value is -1 .
+        ngeMap[nums2[i]] = -1;
       }
     }
-    stack.push(arr[i]);
+    stack.push(nums2[i]); // every time push element inside stack
   }
 
   let ans = [];
-  for (let i = 0; i < nums1.length; i++) {
-    ans.push(ngeMap[nums1[i]]);
+  for (let j = 0; j < nums1.length; j++) {
+    ans.push(ngeMap[nums1[j]]);
   }
 
   return ans;
