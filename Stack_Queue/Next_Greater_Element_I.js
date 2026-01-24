@@ -135,5 +135,5 @@ function nextGreaterElement(nums1, arr) {
     stack.push(arr[i]);
   }
 
-  return nums1.map((x) => ngeMap[x]);
+  return nums1.map((x) => ngeMap[x]); // we are mapping nums1 with it's value
 }
