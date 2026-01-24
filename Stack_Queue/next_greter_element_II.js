@@ -52,3 +52,30 @@ function nextGreaterElements(nums) {
   // n -> double [nums,nums] ans n/2 [nums]
   return ans.slice(0, n / 2); // only single array value show in ans
 }
+
+// Next Greter Element II (Optimized Approch)
+
+function nextGreaterElementsz(arr) {
+  let stack = [];
+  let n = arr.length;
+
+  let ans = Array(n).fill(-1);
+
+  stack.push(arr[n - 1]);
+
+  for (let i = 2 * n - 2; i >= 0; i--) {
+    // we are just looping from (2*n) - 2 ---> till 0
+    while (stack.length) {
+      let top = stack[stack.length - 1];
+      if (arr[i % n] < top) {
+        // ex :- index=13 , n=9  -> (13 % 9) => 4(remaninde element)
+        ans[i % n] = top;
+        break;
+      } else {
+        stack.pop();
+      }
+    }
+    stack.push(arr[i % n]);
+  }
+  return ans.slice(0, n);
+}
