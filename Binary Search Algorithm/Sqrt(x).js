@@ -46,3 +46,27 @@ function mySqrt(x) {
   }
   return ans;
 }
+
+// With Batter Optimization (Binary Search Algorithm)
+
+function mySqrt(x) {
+  if (x < 2) return x;
+
+  let l = 2;
+  let r = Math.floor(x / 2);
+
+  while (l <= r) {
+    let mid = Math.floor((l + r) / 2);
+    if (x === mid) {
+      return mid;
+    } else if (x < mid * mid) {
+      r = mid - 1;
+    } else {
+      l = mid + 1;
+    }
+  }
+  if (r <= l) {
+    return r; // Or just (return r;)  no need to return mid or check condition it's just for understanding purpose
+  }
+  return mid;
+}
