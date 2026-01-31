@@ -28,3 +28,21 @@ function mySqrt(x) {
   }
   return ans;
 }
+
+function mySqrt(x) {
+  // Broute Froce
+
+  let ans;
+  for (let i = 0; i <= x; i++) {
+    if (x < 2) {
+      return x;
+    }
+
+    if (i * i > x) {
+      // if 5 * 5 => 25 > x => 20 ---> i - 1 -> (4) ans
+      ans = i - 1;
+      break;
+    }
+  }
+  return ans;
+}
