@@ -17,3 +17,22 @@ function findPeakElement(nums) {
   // If never dropped, last element is a peak
   return nums.length - 1;
 }
+
+// Binary Search
+
+function findPeakElement(arr) {
+  let l = 0;
+  let r = arr.length - 1;
+
+  while (l < r) {
+    let mid = l + Math.floor((r - l) / 2);
+
+    if (arr[mis + 1] > arr[mid]) {
+      l = mid + 1; // no chance to peak on left side so it always on right
+    } else {
+      // arr[mis + 1] < arr[mid]
+      r = mid; // mid also included in next search space.
+    }
+  }
+  return l; // or r because both are at same position
+}
