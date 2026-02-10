@@ -12,3 +12,28 @@ function findMin(nums) {
   }
   return min;
 }
+
+// Binary Search
+
+function findMin(arr) {
+  let l = 0;
+  let r = arr.length - 1;
+
+  while (l <= r) {
+    // if searching space is sorted than return first element
+    if (arr[l] <= arr[r]) {
+      return arr[l];
+    }
+
+    let mid = l + Math.floor((r - l) / 2);
+
+    if (arr[mid] < arr[mid - 1]) {
+      return arr[mid];
+    } else if (arr[l] > arr[mid]) {
+      // left part is non-sorted
+      r = mid - 1;
+    } else {
+      l = mid + 1;
+    }
+  }
+}
