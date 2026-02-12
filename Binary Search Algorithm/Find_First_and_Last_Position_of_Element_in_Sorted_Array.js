@@ -17,3 +17,39 @@ function searchRange(nums, target) {
 
   return [first, last];
 }
+
+// Binary Search
+
+function searchRange(nums, target) {
+  let l = 0;
+  let r = nums.length - 1;
+  let arr = [-1, -1];
+
+  // for target starting index
+  while (l < r) {
+    let mid = l + Math.floor((r - l) / 2); // Math.floor (Round Down -> 2.95 = 2)
+    if (nums[mid] < target) {
+      l = mid + 1;
+    } else {
+      r = mid;
+    }
+  }
+
+  if (nums[l] === target) arr[0] = l; // only index return not element
+
+  // for target ending index
+  l = 0;
+  r = nums.length - 1;
+  while (l < r) {
+    let mid = l + Math.ceil((r - l) / 2); // Math.ceil (Round UP -> 2.95 = 3)
+    if (nums[mid] > target) {
+      r = mid - 1;
+    } else {
+      l = mid;
+    }
+  }
+
+  if (nums[l] === target) arr[1] = l; // only index return not element
+
+  return arr;
+}

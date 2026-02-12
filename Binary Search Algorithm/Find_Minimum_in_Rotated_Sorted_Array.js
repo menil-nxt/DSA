@@ -29,10 +29,15 @@ function findMin(arr) {
 
     if (arr[mid] < arr[mid - 1]) {
       return arr[mid];
-    } else if (arr[l] > arr[mid]) {
-      // left part is non-sorted
+    }
+
+    // left part is non-sorted
+    else if (arr[l] > arr[mid]) {
       r = mid - 1;
-    } else {
+    }
+
+    // right part is non-sorted
+    else {
       l = mid + 1;
     }
   }
