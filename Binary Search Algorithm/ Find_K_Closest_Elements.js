@@ -30,3 +30,43 @@ function findClosestElement(arr, k, x) {
 
   return result;
 }
+
+// Binary Search
+
+function findClosestElement(arr, k, x) {
+  let l = 0;
+  let r = arr.length - 1;
+
+  while (l < r) {
+    // if both are at same potion loop is break -> l == r
+    let mid = l + Math.floor((r - l) / 2);
+    if (arr[mid + k] - x < x - arr[mid]) {
+      l = mid + 1;
+    } else {
+      r = mid;
+    }
+  }
+  return arr.slice(l, l + k);
+}
+
+function findClosestElement(arr, k, x) {
+  let l = 0;
+  let r = arr.length - 1;
+
+  while (l < r) {
+    // if both are at same potion loop is break -> l == r
+    let mid = l + Math.floor((r - l) / 2);
+    if (arr[mid + k] - x < x - arr[mid]) {
+      l = mid + 1;
+    } else {
+      r = mid;
+    }
+  }
+
+  let ans = [];
+  for (let i = l; i < l + k; i++) {
+    ans.push(arr[i]);
+  }
+
+  return ans;
+}
