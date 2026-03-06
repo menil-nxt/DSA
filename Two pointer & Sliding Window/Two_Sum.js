@@ -13,3 +13,19 @@ function twoSum(nums, target) {
     }
   }
 }
+
+// Optimize Approch
+
+function twoSum(nums, target) {
+  let map = {};
+  for (let i = 0; i < nums.length; i++) {
+    map[nums[i]] = i;
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    let pairTwoFind = target - nums[i];
+    if (map[pairTwoFind] && map[pairTwoFind] != i) {
+      return [i, map[pairTwoFind]];
+    }
+  }
+}
