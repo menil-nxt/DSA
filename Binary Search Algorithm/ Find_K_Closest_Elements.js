@@ -31,7 +31,7 @@ function findClosestElement(arr, k, x) {
   return result;
 }
 
-// Binary Search
+// (Binary Search)
 
 function findClosestElement(arr, k, x) {
   let l = 0;
