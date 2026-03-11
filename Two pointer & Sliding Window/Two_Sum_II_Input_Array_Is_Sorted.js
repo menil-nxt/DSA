@@ -1,5 +1,8 @@
 // Two Sum II - Input Array Is Sorted
 
+
+// two pointer Approch 
+
 function twoSum(nums, target) {
   let i = 0;
   let j = nums.length - 1;
