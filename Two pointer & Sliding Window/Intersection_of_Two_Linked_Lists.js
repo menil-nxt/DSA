@@ -48,3 +48,32 @@ var getIntersectionNode = function (headA, headB) {
 
   return pA; // OR pB any of you can return both are at same position
 };
+
+var getIntersectionNode = function (headA, headB) {
+  // put all headB node inside set
+  let data = new Set();
+  while (headB) {
+    data.add(headB);
+    headB = headB.next;
+  }
+
+  // check for each element of headA is if they are present inside set or not
+  while (headA) {
+    if (data.has(headA)) {
+      return headA;
+    }
+    headA = headA.next;
+  }
+  return null;
+};
+
+var getIntersectionNode = function (headA, headB) {
+  let pA = headA;
+  let pB = headB;
+
+  while (pA != pB) {
+    pA = pA == null ? headB : pA.next;
+    pB = pB == null ? headA : pB.next;
+  }
+  return pA; // Or pB
+};
