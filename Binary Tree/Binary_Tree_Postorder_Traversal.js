@@ -17,22 +17,23 @@ function postorderTraversal(root) {
   return ans;
 }
 
-// Itetrative Approch
-
+// Iterative Approch
 function postorderTraversal(root) {
-  // corner case
   if (!root) return [];
 
-  let ans = [];
-  let stack = [root];
+  let s1 = [root];
+  let s2 = [];
 
-  while (stack.length) {
-    let curr = stack.pop();
-    ans.push(curr.val);
-    // Only push curr.right if it is present
-    curr.right && stack.push(curr.right); // For saving location we first push into stack right side of tree(node)
+  while (s1.length) {
+    let curr = s1.pop(); // pop out from s1 and push it into s2
+    s2.push(curr);
+    curr.left && s1.push(curr.left); // than if curr is exist than curr.child push into s1
+    curr.right && s1.push(curr.right);
+  }
 
-    curr.left && stack.push(curr.left);
+  let ans = []; // convert stack into array with value. -> reverse stack
+  while (s2.length) {
+    ans.push(s2.pop().val);
   }
   return ans;
 }
