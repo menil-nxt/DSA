@@ -17,7 +17,7 @@ function postorderTraversal(root) {
   return ans;
 }
 
-// Iterative Approch
+// Iterative Approch - using two stack
 function postorderTraversal(root) {
   if (!root) return [];
 
@@ -34,6 +34,32 @@ function postorderTraversal(root) {
   let ans = []; // convert stack into array with value. -> reverse stack
   while (s2.length) {
     ans.push(s2.pop().val);
+  }
+  return ans;
+}
+
+// Iterative Approch - using one stack
+function postorderTraversal(root) {
+  let ans = [];
+  let stack = [];
+  let curr = root;
+  let lastVisited = null;
+
+  while (curr || stack.length) {
+    // push all values to stack till i reach leftmost bottom
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    // peeking topOfStack element
+    let topOfStack = stack[stack.length - 1];
+    // if right exists & it is not last visited
+    if (topOfStack.right && topOfStack.right != lastVisited) {
+      curr = topOfStack.right;
+    } else {
+      ans.push(topOfStack.val);
+      lastVisited = stack.pop();
+    }
   }
   return ans;
 }
