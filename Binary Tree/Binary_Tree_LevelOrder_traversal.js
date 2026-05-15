@@ -31,3 +31,18 @@ var levelOrder = function (root) {
 
   return ans;
 };
+
+//Recursive Approch
+
+var levelOrder = function (root) {
+  if (!root) return [];
+  let ans = [];
+  let traversal = (curr, level) => {
+    if (!ans[level]) ans[level] = []; // if(ans[level]) is not present than for that ans[level] return [];
+    ans[level].push(curr.val); // ans[0] = [3] , ans[1] = [9,20] , ans[2] = [15,7]
+    curr.left && traversal(curr.left, level + 1);
+    curr.right && traversal(curr.right, level + 1);
+  };
+  traversal(root, 0);
+  return ans;
+};
