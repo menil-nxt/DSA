@@ -17,3 +17,17 @@ function invertTree(root) {
   }
   return root;
 }
+
+// Recursive Approch
+function invertTree(root) {
+  if (!root) return null;
+
+  root.left = invertTree(root.left);
+  root.right = invertTree(root.right);
+
+  let temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+
+  return root;
+}
