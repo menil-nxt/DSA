@@ -21,3 +21,15 @@ function searchBST(root, val) {
   traversal(root);
   return ans;
 }
+
+// Bootom Up Approch
+
+function searchBST(root, val) {
+  // Bottom Up Approch
+
+  if (!root || root.val === val) return root; // if root(leaf) is null or root.val ==== val than return that root
+
+  return root.val < val // if root.val is < val(root smaller than val) function call with root.right
+    ? searchBST(root.right, val)
+    : searchBST(root.left, val); // other wise call with root.left
+}
